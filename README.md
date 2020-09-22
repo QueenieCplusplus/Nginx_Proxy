@@ -13,4 +13,6 @@ Proxy Server &amp; Reverse Proxy Server
 
 * Reverse Proxy
 
+反向代理伺服器用來讓網外的用呼端連線區域網中的網站以造訪網站中資源，造訪方向與正向代理相反。
+
 ![reverse](https://raw.githubusercontent.com/QueenieCplusplus/Nginx_Proxy/master/Reversed_Proxy.png)
