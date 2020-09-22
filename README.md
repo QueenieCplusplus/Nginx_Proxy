@@ -42,6 +42,8 @@ Proxy Server &amp; Reverse Proxy Server
 ![rp](https://raw.githubusercontent.com/QueenieCplusplus/Nginx_Proxy/master/r_p.png)
 
 
+(1) 關於代理伺服器服務群的設定
+
       upstream{  # 倘若被代理伺服器是一組（群）伺服器，則使用 upstream 設定後端伺服器組。
 
        server http://192.168.1.1:8001/uri/; 
@@ -60,6 +62,26 @@ Proxy Server &amp; Reverse Proxy Server
               proxy_pass http://localhost:8000/blog_article;
               proxy_pass http://unix:/tmp/backend.socket:/uri/;
               proxy_pass service_group # 倘若被代理伺服器是一組（群）伺服器，則使用 upstream 設定後端伺服器組。
+
+          }
+
+      }
+      
+ (2) 關於轉址的設定
+ 
+       server{
+
+          server_name www.katesapp.com
+          listen 80;
+          location /{
+
+             proxy_pass http://192.168.1.6;
+
+          }
+          
+           location /article/{
+
+             proxy_pass http://192.168.1.7; # 此為當使用者對目的www.katesapp.com/article 發起請求，因為 代理伺服器的 url 變數不會包含 uri, 故實際轉址為 http://192.168.1.7/article
 
           }
 
