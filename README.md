@@ -40,3 +40,28 @@ Proxy Server &amp; Reverse Proxy Server
 ![reverse](https://raw.githubusercontent.com/QueenieCplusplus/Nginx_Proxy/master/Reversed_Proxy.png)
 
 ![rp](https://raw.githubusercontent.com/QueenieCplusplus/Nginx_Proxy/master/r_p.png)
+
+
+      upstream{  # 倘若被代理伺服器是一組（群）伺服器，則使用 upstream 設定後端伺服器組。
+
+       server http://192.168.1.1:8001/uri/; 
+       server http://192.168.1.2:8001/uri/; # 同阜，不同 ip，使用 bind()
+       server http://192.168.1.3:8000/uri/; # 不同阜，表示不同服務  
+
+      }
+      server{
+
+          resolver 8.8.8.8;
+          listen 82;
+          location /{
+
+              proxy_pass http://$http_host$req_uri; # 被代理伺服器的位址，可能是 主機名稱 與i p+port 和 uri 等要素
+              proxy_pass http://www.queenie.com/tech;
+              proxy_pass http://localhost:8000/blog_article;
+              proxy_pass http://unix:/tmp/backend.socket:/uri/;
+              proxy_pass service_group # 倘若被代理伺服器是一組（群）伺服器，則使用 upstream 設定後端伺服器組。
+
+          }
+
+      }
+
