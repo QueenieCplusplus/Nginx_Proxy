@@ -96,10 +96,13 @@ Proxy Server &amp; Reverse Proxy Server
           location /{
 
              proxy_pass http://192.168.1.6;
-             proxy_hide_header [field]; # 此指令可在 http、server、location 區塊中進行設定。
-             proxy_pass_header [field]; # 設定可以被發送的標頭資訊。
+             proxy_hide_header [field 標頭域]; # 此指令可在 http、server、location 區塊中進行設定。
+             proxy_pass_header [field 標頭域]; # 設定可以被發送的標頭資訊。
              proxy_pass_request_header on; # 設定用戶端將請求標頭發送給代理伺服器
              proxy_pass_request_body on; # 設定用戶端將請求本體發送給代理伺服器
+             
+             proxy_set_header field value; # 代理伺服器接收使用者端請求之標頭後經過修改，轉發給被代理伺服器。
+             proxy_set_header $Host $proxy_host;
 
           }
           
