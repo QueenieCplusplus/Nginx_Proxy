@@ -86,4 +86,23 @@ Proxy Server &amp; Reverse Proxy Server
           }
 
       }
+      
+ (3) 隱藏標頭資訊
+ 
+        server{
 
+          server_name www.katesapp.com
+          listen 80;
+          location /{
+
+             proxy_pass http://192.168.1.6;
+             proxy_hide_header [field]; # 此指令可在 http、server、location 區塊中進行設定。
+             proxy_pass_header [field]; # 設定可以被發送的標頭資訊。
+             proxy_pass_request_header on; # 設定用戶端將請求標頭發送給代理伺服器
+             proxy_pass_request_body on; # 設定用戶端將請求本體發送給代理伺服器
+
+          }
+          
+      }
+ 
+ 
