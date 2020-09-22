@@ -14,6 +14,23 @@ Proxy Server &amp; Reverse Proxy Server
 
 ![fp](https://raw.githubusercontent.com/QueenieCplusplus/Nginx_Proxy/master/f_p.png)
 
+基本部署的設定實例
+
+
+      // Forward Proxy Server
+
+
+      server{
+
+          resolver 8.8.8.8; # 設定 DNS 伺服器的虛擬網路位址為 8.8.8.8，預設 DNS 服務的通訊阜號為 53，伺服器因此能處理收到的域名。
+          listen 82; # 正向代理服務的監聽阜設定為 82
+          location /{  # 伺服器收到的所有請求，都由此區塊過濾處理。
+              proxy_pass http://$http_host$req_uri
+          }
+
+      }
+
+
 * Reverse Proxy
 
 反向代理伺服器用來讓網外的用呼端連線區域網中的網站以造訪網站中資源。
