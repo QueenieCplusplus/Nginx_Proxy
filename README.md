@@ -12,6 +12,7 @@ Proxy Server &amp; Reverse Proxy Server
 
 ![forward](https://raw.githubusercontent.com/QueenieCplusplus/Nginx_Proxy/master/Forward_Proxy.png)
 
+![fp](https://raw.githubusercontent.com/QueenieCplusplus/Nginx_Proxy/master/f_p.png)
 
 * Reverse Proxy
 
