@@ -140,5 +140,20 @@ Proxy Server &amp; Reverse Proxy Server
           }
           
       }
+      
+   (6) http 支援版本
+   
+      server{
+
+          server_name www.katesapp.com
+          listen 80;
+          location /{
+
+             proxy_pass http://192.168.1.6;
+             proxy_http_version 1.0 | 1.1;
+            
+          }
+          
+      }
   
   
