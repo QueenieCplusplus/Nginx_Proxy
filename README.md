@@ -262,6 +262,11 @@ Proxy Server &amp; Reverse Proxy Server
           }
           
       }
+      
+      
+  # Load Balancing, 負載平衡
+  
+   (to be continued...)
        
 
    
