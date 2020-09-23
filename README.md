@@ -241,7 +241,7 @@ Proxy Server &amp; Reverse Proxy Server
 
              proxy_pass http://192.168.1.6; # 此指令將用戶端請求位址重新定義為被代理伺服器的位置
              proxy_headers_hash_max_size [size]; 此指令設定儲存 http 封包標頭的雜湊表容量，預設上限為 512 字元。
-             # 此 hash table 能儲存標頭中各種資訊，如伺服器名稱、多元網路媒體類型、請求標頭之名稱等等，固定單位大小由 proxy_headers_hash_bucket_size 設定。
+             # 此 hash table 能儲存標頭中各種資訊，如伺服器名稱、多元網路媒體類型、請求標頭之名稱等等，固定單位大小由 proxy_headers_hash_bucket_size 設定，預設為 64 字元。
               
           }
           
