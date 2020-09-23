@@ -279,6 +279,8 @@ Proxy Server &amp; Reverse Proxy Server
      透過加權輪詢實現，適合一般網路。
      
      
+     範例 1
+                 
                  upstream service_group{  # 倘若被代理伺服器是一組（群）伺服器，則使用 upstream 設定後端伺服器組。
 
                    server http://192.168.1.1:80; 
@@ -298,6 +300,30 @@ Proxy Server &amp; Reverse Proxy Server
                       }
 
                   }
+                  
+       範例 2
+       
+       
+                upstream service_group{  # 倘若被代理伺服器是一組（群）伺服器，則使用 upstream 設定後端伺服器組。
+
+                   server http://192.168.1.1:80  weigth=5; 
+                   server http://192.168.1.2:80  weight=2;            # 實現加權負載平衡，權重越低，則接受與處理的用戶端請求最少。
+                   server http://192.168.1.3:80;
+
+                  }
+
+                  server{
+
+                      server_name www.pattyappier.com;
+                      listen 80;
+                      location /{
+
+                          proxy_pass service_group # 倘若被代理伺服器是一組（群）伺服器，則使用 upstream 設定後端伺服器組。
+
+                      }
+
+                  }
+               
    
    * 動態負載平衡演算法
    
