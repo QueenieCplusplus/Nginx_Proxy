@@ -44,7 +44,7 @@ Proxy Server &amp; Reverse Proxy Server
 
 (1) 關於代理伺服器服務群的設定
 
-      upstream{  # 倘若被代理伺服器是一組（群）伺服器，則使用 upstream 設定後端伺服器組。
+      upstream service_group{  # 倘若被代理伺服器是一組（群）伺服器，則使用 upstream 設定後端伺服器組。
 
        server http://192.168.1.1:8001/uri/; 
        server http://192.168.1.2:8001/uri/; # 同阜，不同 ip，使用 bind()
@@ -277,16 +277,29 @@ Proxy Server &amp; Reverse Proxy Server
    * 靜態負載平衡演算法
    
      透過加權輪詢實現，適合一般網路。
+     
+     
+                 upstream service_group{  # 倘若被代理伺服器是一組（群）伺服器，則使用 upstream 設定後端伺服器組。
+
+                   server http://192.168.1.1:80; 
+                   server http://192.168.1.2:80;
+                   server http://192.168.1.3:80;
+
+                  }
+
+                  server{
+
+                      server_name www.pattyappier.com;
+                      listen 80;
+                      location /{
+
+                          proxy_pass service_group # 倘若被代理伺服器是一組（群）伺服器，則使用 upstream 設定後端伺服器組。
+
+                      }
+
+                  }
    
    * 動態負載平衡演算法
    
-     包含最少連接優先演算法、最快回應優先演算法、動態效能分配演算法，適合複雜網路。
-       
-
-   
-   
-   
-   
-   
-   
+     包含最少連接優先演算法、最快回應優先演算法、動態效能分配演算法，適合複雜網路。 
   
