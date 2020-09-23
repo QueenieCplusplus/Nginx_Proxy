@@ -188,6 +188,20 @@ Proxy Server &amp; Reverse Proxy Server
       }
    
    
+   (9)重新定義使用者的請求位址
+   
+      server{
+
+          server_name www.katesapp.com
+          listen 80;
+          location /{
+
+             proxy_pass http://192.168.1.6; # 此指令將用戶端請求位址重新定義為被代理伺服器的位置
+             proxy_redirect [redirect] [replacement]; # 藉此指令，可以將回應標頭和用戶端請求位址相對應，而非代理伺服器的傳回的位址資訊。
+            
+          }
+          
+      }
    
   
   
