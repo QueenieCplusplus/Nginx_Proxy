@@ -87,7 +87,7 @@ Proxy Server &amp; Reverse Proxy Server
 
       }
       
- (3) 隱藏標頭資訊
+ (3) 隱藏或忽略不處理標頭資訊
  
         server{
 
@@ -105,6 +105,7 @@ Proxy Server &amp; Reverse Proxy Server
              proxy_set_header $Host $proxy_host;
              proxy_set_header $Host $host:$proxy_port;
              proxy_set_body value; # 代理伺服器接收使用者端請求之請求本體，經過修改後，將新請求轉發給被代理伺服器。
+             proxy_ignore_headers field...; # 代理伺服器去到被代理伺服器的回應資料後，不會處理被設定的標頭域。
 
           }
           
