@@ -103,6 +103,8 @@ Proxy Server &amp; Reverse Proxy Server
              
              proxy_set_header field value; # 代理伺服器接收使用者端請求之標頭後經過修改，轉發給被代理伺服器。
              proxy_set_header $Host $proxy_host;
+             proxy_set_header $Host $host:$proxy_port;
+             proxy_set_body value; # 代理伺服器接收使用者端請求之請求本體，經過修改後，將新請求轉發給被代理伺服器。
 
           }
           
