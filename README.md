@@ -282,7 +282,7 @@ Proxy Server &amp; Reverse Proxy Server
                  upstream service_group{  # 倘若被代理伺服器是一組（群）伺服器，則使用 upstream 設定後端伺服器組。
 
                    server http://192.168.1.1:80; 
-                   server http://192.168.1.2:80;
+                   server http://192.168.1.2:80;      # 預設權重為 1，實現一般輪詢
                    server http://192.168.1.3:80;
 
                   }
