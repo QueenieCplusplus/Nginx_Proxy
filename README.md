@@ -110,10 +110,10 @@ Proxy Server &amp; Reverse Proxy Server
           
       }
  
- （4) bind 
+ （4) bind 繫連結
  
  
-         server{
+      server{
 
           server_name www.katesapp.com
           listen 80;
@@ -124,3 +124,21 @@ Proxy Server &amp; Reverse Proxy Server
           }
           
       }
+      
+  (5) 逾時設定
+  
+      server{
+
+          server_name www.katesapp.com
+          listen 80;
+          location /{
+
+             proxy_connect_timeout time; # 代理伺服器與被代理伺服器嘗試建立連接的逾時間，預設為 60s。
+             proxy_read_timeout time; #代理伺服器向後端被代理伺服器服務群組發出讀取請求後，等待回應的逾時間，預設為 60s。
+             proxy_send_timeout time; #代理伺服器向後端被代理伺服器發出寫入請求後，等待回應的逾時間，預設為 60s。
+            
+          }
+          
+      }
+  
+  
