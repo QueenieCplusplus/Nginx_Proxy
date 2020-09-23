@@ -190,6 +190,8 @@ Proxy Server &amp; Reverse Proxy Server
    
    (9)重新定義使用者的請求位址
    
+      設定方式(1)與設定方式(2)相同
+   
       server{
 
           server_name www.katesapp.com
@@ -198,6 +200,10 @@ Proxy Server &amp; Reverse Proxy Server
 
              proxy_pass http://192.168.1.6; # 此指令將用戶端請求位址重新定義為被代理伺服器的位置
              proxy_redirect [redirect 被取代值] [replacement 取代值]; # 藉此指令，可以將回應標頭和用戶端請求位址相對應，而非代理伺服器的傳回的位址資訊。
+             
+             # 設定方式(1)
+             proxy_pass http://proxyserver/;
+             proxy_redirect http://proxyserver/ /server/; # 前面的值為被取的的值 後者的值為取代值。
             
           }
           
