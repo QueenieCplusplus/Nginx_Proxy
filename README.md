@@ -204,10 +204,34 @@ Proxy Server &amp; Reverse Proxy Server
              # 設定方式(1)
              proxy_pass http://proxyserver/;
              proxy_redirect http://proxyserver/ /server/; # 前面的值為被取的的值 後者的值為取代值。
+             
+             # 設定方式(2)
+             proxy_pass http://proxyserver/;
+             proxy_redirect default ; # 前面的值為被取的的值 後者的值為取代值。
+             
             
           }
           
       }
    
-  
+   (10) 回應 http 狀態碼
+   
+   
+         server{
+
+          server_name www.katesapp.com
+          listen 80;
+          location /{
+
+             proxy_pass http://192.168.1.6; # 此指令將用戶端請求位址重新定義為被代理伺服器的位置
+             proxy_intercept_errors on; # 開啟此狀態，則被代理伺服器倘若回傳狀態數字大於等於 400，則代理伺服器使用自定義的錯誤頁面，如此設定被關閉，則被代理伺服器傳回的 http 狀態直接回應給使用者端。
+            
+          }
+          
+      }
+   
+   
+   
+   
+   
   
