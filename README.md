@@ -155,5 +155,38 @@ Proxy Server &amp; Reverse Proxy Server
           }
           
       }
+      
+   (7) 改寫用戶端請求的方法
+   
+     server{
+
+          server_name www.katesapp.com
+          listen 80;
+          location /{
+
+             proxy_pass http://192.168.1.6;
+             proxy_method POST; # or GET, 此指令一經設定，用戶端請求方法的域值將被忽略。
+            
+          }
+          
+      }
+      
+   (8) 戶端請求中斷時，設定代理伺服器也中斷與來自被代理伺服器的請求。
+   
+        server{
+
+          server_name www.katesapp.com
+          listen 80;
+          location /{
+
+             proxy_pass http://192.168.1.6;
+             proxy_ignore_client_abort on;
+            
+          }
+          
+      }
+   
+   
+   
   
   
