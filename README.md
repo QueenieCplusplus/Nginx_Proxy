@@ -246,7 +246,24 @@ Proxy Server &amp; Reverse Proxy Server
           }
           
       }
+      
+      
+   (12) HTTPs
    
+      server{
+
+          server_name www.katesapp.com
+          listen 80;
+          location /{
+
+             proxy_pass http://192.168.1.6; # 此指令將用戶端請求位址重新定義為被代理伺服器的位置
+             proxy_ssl_session reuse on; # 此指令設定用以 SSL (第五層 secure socket layer) 安全協定為基礎的階段連接被代理的伺服器。 
+            
+          }
+          
+      }
+       
+
    
    
    
