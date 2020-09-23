@@ -110,4 +110,17 @@ Proxy Server &amp; Reverse Proxy Server
           
       }
  
+ （4) bind 
  
+ 
+         server{
+
+          server_name www.katesapp.com
+          listen 80;
+          location /{
+
+             proxy_bind addr; # 強制將代理主機連接與指定ip綁定。
+            
+          }
+          
+      }
